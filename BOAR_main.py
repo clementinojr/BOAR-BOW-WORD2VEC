@@ -5,23 +5,11 @@ import json
 import re
 import pandas as pd
 import numpy as np
-import plotly.graph_objects as go
-import plotly.graph_objs as go
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-from sklearn.metrics import pairwise_distances
-from sklearn.metrics import silhouette_samples, silhouette_score
-from sklearn.datasets import make_blobs
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_samples, silhouette_score
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn import metrics
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.cluster import AgglomerativeClustering
 from time import gmtime, strftime
 from datetime import datetime
 
-
-# In[55]:
 
 
 #Reading file provide SQL
@@ -29,7 +17,6 @@ def read_csv(name_df,path):
     name_df = pd.read_csv(path+".csv",index_col=0)
     return name_df
 #df = pd.read_csv("data-1579021640655.csv") 
-
 
 
 
@@ -349,7 +336,7 @@ def add_name_occ(df_com_labels, df_com):
 
 
 df= read_csv('df','data')
-df = df.head(45720)#-----------------
+#df = df.head(45720)#-----------------
 df_original = df
 df_original.sort_values('visit_id', inplace=True, ascending=True ,kind='mergesort')
 df_a = df
@@ -459,6 +446,10 @@ x = tfidf.fit_transform(arr)
 df_tfidf = pd.DataFrame(x.toarray(), columns=tfidf.get_feature_names())
 print(df_tfidf)
 
+df_tfidf.to_csv("representation_BOARN.csv",index = False)
+
+
+exit(1)
 
 # In[79]:
 
